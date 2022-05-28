@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+        integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="account">Your Account</div>
+        <a href="#" id="Login">Login</a>
+
+
+
+
+        <div class="popup" id="popup">
+
+            <i class="fa-solid fa-xmark" id="icon-close"></i><span class="Name-pass" id="NamePass"></span></i><span
+                class="Name-pass" id="pass"></span>
+            <h3>Your Account</h3>
+
+            <i class="fa-solid fa-user" id="user-pass"></i><label>Username</label><i class="fa-solid fa-star-of-life"
+                id="star"></i>
+
+            <input type="text" id="username" onkeyup="validUser()" placeholder="Username" required>
+
+            <hr class="under-line-one">
+            <i class="fa-solid fa-key" id="user-pass"></i><label>Password</label><i class="fa-solid fa-star-of-life"
+                id="star"></i>
+
+            <input type="password" id="password" onkeyup="validPassword()" placeholder="Password" required>
+            <hr class="under-line-two">
+
+            <input type="checkbox" onclick="checkbox()" id="name" class="checkbox"> <label for="name"
+                class="show-password">Show
+                password</label><br>
+
+            <input type="button" onclick="submit()" id="btn" value="Login">
+
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+
+
+
+        var NamePass = document.getElementById("NamePass");
+        var pass = document.getElementById("pass");
+        var Loginsucc = document.getElementById("ok");
+
+
+        document.getElementById("Login").addEventListener("click", function () {
+            document.getElementById("popup").style.display = "block";
+
+        })
+
+        document.getElementById("icon-close").addEventListener("click", function () {
+            document.getElementById("popup").style.display = "none";
+        })
+
+
+        //name  valid//
+
+        function validUser() {
+            var name = document.getElementById("username").value;
+
+            if (name.length == 0) {
+                NamePass.style.display = 'block';
+                NamePass.innerHTML = "! Invalid Username";
+                setTimeout(function () { NamePass.style.display = 'none' }, 3000)
+                return false;
+
+            }
+        }
+
+        // password//
+
+        function validPassword() {
+            var password = document.getElementById("password").value;
+            if (password.length == 0) {
+                pass.style.display = 'block';
+                pass.innerHTML = "! Invalid Password";
+                setTimeout(function () { pass.style.display = 'none' }, 4000)
+                return false;
+
+            }
+
+
+        }
+
+        // submit//
+
+        function checkbox() {
+            var x = document.getElementById("password");
+
+            if (x.type === "password") {
+                x.type = "text";
+
+            } else {
+                x.type = "password";
+            }
+
+        }
+
+
+        // submit//
+
+        function submit() {
+
+            var userName = "Mahesh babu";
+            var Password = "12345";
+
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (userName == username & Password == password) {
+                swal("Successfully Login! Mahesh Babu", "Happy Birthday Mahesh Anna!", "success");
+                popup.style.display = "none";
+            }
+            else {
+                swal("Oops", "Username & password wrong!", "error");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
